@@ -1,0 +1,9 @@
+USE eod;
+SELECT *
+FROM (
+	SELECT symbol as Symbol, DATE_FORMAT(Date, "%m-%Y") as Month, 
+	AVG(Close) as AvgClose
+	FROM nyse
+	GROUP BY DATE_FORMAT(Date, "%m-%Y")
+) as MonYearClose
+Order by Symbol, Month;
